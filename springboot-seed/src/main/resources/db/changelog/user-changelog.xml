@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd
+		http://www.liquibase.org/xml/ns/dbchangelog-ext
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="add_TBL_USER" author="carlosxiao">
+        <createTable tableName="TBL_USER" remarks="用户">
+            <column name="ID" type="NUMBER(16)" remarks="主键标识">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="USERNAME" type="VARCHAR2(255)" remarks="姓名">
+                <constraints nullable="false" />
+            </column>
+            <column name="PASSWORD" type="VARCHAR2(255)" remarks="密码">
+                <constraints nullable="false" />
+            </column>
+            <column name="EMAIl" type="VARCHAR2(255)" remarks="邮箱">
+                <constraints nullable="false" />
+            </column>
+            <column name="CREATE_TIME" type="DATE" remarks="创建时间" defaultValueDate="sysdate">
+                <constraints nullable="false" />
+            </column>
+            <column name="UPDATE_TIME" type="DATE" remarks="修改时间" defaultValueDate="sysdate">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="init-seed-data" author="carlosxiao">
+        <sqlFile path="classpath:db/sql/init-data.sql"/>
+    </changeSet>
+
+</databaseChangeLog>

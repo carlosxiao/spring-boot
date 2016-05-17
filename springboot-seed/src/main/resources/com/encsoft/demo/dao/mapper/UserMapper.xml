@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.encsoft.demo.dao.mapper.UserMapper">
+
+    <resultMap id="UserMap" type="User">
+        <result property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="query">
+        select ID,USERNAME,PASSWORD,EMAIL,CREATE_TIME,UPDATE_TIME FROM TBL_USER
+
+    </sql>
+
+    <select id="get" resultMap="UserMap">
+        <include refid="query" />
+        where id = #{id}
+    </select>
+
+    <select id="find" resultMap="UserMap">
+        <include refid="query" />
+    </select>
+
+
+    <insert id="insert" parameterType="User">
+
+    </insert>
+
+    <update id="update" parameterType="User">
+        update TBL_USER
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            update_time = sysdate
+        </set>
+        where id = #{id} and update_time = #{updateTime}
+    </update>
+
+</mapper>

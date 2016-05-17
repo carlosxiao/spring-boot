@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>ID</td>
+        <td>USERNAME</td>
+        <td>EMAIL</td>
+        <td>OP</td>
+    </tr>
+    <#list userList as user>
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.username}</td>
+            <td>${user.email}</td>
+            <td>update , delete</td>
+        </tr>
+    </#list>
+</table>
+</body>
+</html>
