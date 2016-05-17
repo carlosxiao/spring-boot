@@ -4,7 +4,6 @@ import com.encsoft.demo.annotation.Authenticated;
 import com.encsoft.demo.model.User;
 import com.encsoft.demo.service.UserService;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
